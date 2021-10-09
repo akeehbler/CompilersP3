@@ -83,6 +83,23 @@ non terminal IdNode           id;
  
 /* NOTE: Add precedence and associativity declarations here */
 
+precedence right ASSIGN;
+
+precedence left OR;
+
+precedence left AND;
+
+precedence nonassoc LESS, LESSEQ, GREATER, GREATEREQ, EQUALS, NOTEQUALS;
+
+precedence left PLUS, MINUS;
+
+precedence left TIMES, DIVIDE;
+
+precedence left NOT;
+
+precedence left DOT; //Not sure where to put this in the order of precedences
+
+//highest precedence is at the bottom  (so DOT and NOT have highest)
 
 start with program;
 
@@ -115,8 +132,17 @@ varDecl         ::= type:t id:i SEMICOLON
                 :}
                 ;
 
-type            ::= INT
-                {: RESULT = new IntNode();
+type            ::= INT:i
+                {: 
+                    RESULT = new IntNode();
+                :}
+                | BOOL
+                {:
+                    RESULT = new BoolNode();
+                :}
+                | VOID
+                {:
+                    RESULT = new VoidNode();
                 :}
                 ;
 
@@ -124,4 +150,6 @@ id              ::= ID:i
                 {: RESULT = new IdNode(i.linenum, i.charnum, i.idVal);
                 :}
                 ;
+
+
 				
