@@ -136,11 +136,11 @@ type            ::= INT:i
                 {: 
                     RESULT = new IntNode();
                 :}
-                | BOOL
+                | BOOL:b
                 {:
                     RESULT = new BoolNode();
                 :}
-                | VOID
+                | VOID:v
                 {:
                     RESULT = new VoidNode();
                 :}
