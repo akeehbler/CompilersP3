@@ -123,7 +123,12 @@ declList        ::= declList:dl decl:d
                 ;
 
 decl            ::= varDecl:v
-                {: RESULT = v;
+                {: 
+                    RESULT = v;
+                :}
+                | structDecl:sd
+                {:
+                    RESULT = sd;
                 :}
                 ;
 
@@ -151,5 +156,15 @@ id              ::= ID:i
                 :}
                 ;
 
+structDecl      ::= STRUCT id:i LCURLY structBody:sb RCURLY SEMICOLON
+                {:
+                    RESULT = new StructDeclNode(i, new DeclListNode(sb));
+                :}
+                ;
+
+structBody      ::= structBody:sb varDecl:v
+                {:
+                    //TODO
+                :}
 
 				
