@@ -174,6 +174,9 @@ class FnBodyNode extends ASTnode {
     }
 
     public void unparse(PrintWriter p, int indent) {
+        //TODO: make sure this is right
+        myDeclList.unparse(p, indent + 4);
+        myStmtList.unparse(p, indent + 4);
     }
 
     // 2 kids
@@ -187,6 +190,7 @@ class StmtListNode extends ASTnode {
     }
 
     public void unparse(PrintWriter p, int indent) {
+        //TODO
     }
 
     // list of kids (StmtNodes)
@@ -247,6 +251,15 @@ class FnDeclNode extends DeclNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
+        addIndent(p, indent);
+        myType.unparse(p, 0);
+        p.print(" ");
+        myId.unparse(p, 0);
+        p.print("(");
+        myFormalsList.unparse(p, 0);
+        p.println(") {");
+        myBody.unparse(p, indent);
+        p.println("}");
     }
 
     // 4 kids
@@ -263,6 +276,7 @@ class FormalDeclNode extends DeclNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
+
     }
 
     // 2 kids
@@ -278,7 +292,6 @@ class StructDeclNode extends DeclNode {
 
     public void unparse(PrintWriter p, int indent) {
         //TODO: Make sure that this is right
-        addIndent(p, indent);
         p.print("struct ");
         myId.unparse(p, indent);
         p.println(" {");

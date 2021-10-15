@@ -79,6 +79,10 @@ non terminal DeclNode         decl;
 non terminal VarDeclNode      varDecl;
 non terminal TypeNode         type;
 non terminal IdNode           id;
+non terminal StructDeclNode   structDecl;
+non terminal LinkedList       structBody;
+non terminal FnDeclNode       fnDecl;
+non terminal FnBodyNode       fnBody;
  
  
 /* NOTE: Add precedence and associativity declarations here */
@@ -163,8 +167,27 @@ structDecl      ::= STRUCT id:i LCURLY structBody:sb RCURLY SEMICOLON
                 ;
 
 structBody      ::= structBody:sb varDecl:v
-                {:
-                    //TODO
+                {:  sb.addLast(v);
+                    RESULT = sb;
                 :}
+                | varDecl:vd
+                {:  LinkedList<VarDeclNode> vl = new LinkedList<VarDeclNode>();
+                    vl.addLast(vd);
+                    RESULT = vl;
+                :}
+                ;
+
+fnDecl          ::= type:t id:i formals:fs fnBody:fb
+                {:
+                    RESULT = new FnDeclNode(t, i, fs, fb);
+                :}
+                ;
+
+fnBody          ::= LCURLY varDeclList:vdl stmtList:sl RCURLY
+                {:
+                    RESULT = new FnBodyNode(new DeclListNode(vdl), new StmtListNode(sl));
+                :}
+                ;
+
 
 				
