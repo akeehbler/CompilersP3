@@ -253,7 +253,57 @@ stmtList        ::= stmtList:sl stmt:s
                 :}
                 ;
 
-stmt            ::= //TODO Later
+stmt            ::= assignExp:a SEMICOLON
+                {:
+                    RESULT = new AssignStmtNode(a);
+                :}
+                | PLUSPLUS loc:l SEMICOLON
+                {:
+                    RESULT = new PreIncStmtNode(l);
+                :}
+                | MINUSMINUS loc:l SEMICOLON;
+                {:
+                    RESULT = new PreDecStmtNode(l);
+                :}
+                | RECIEVE READ loc:l SEMICOLON
+                {:
+                    RESULT = new ReceiveStmtNode(l);
+                :}
+                | PRINT WRITE exp:e SEMICOLON
+                {:
+                    RESULT = new PrintStmtNode(e);
+                :}
+                | IF LPAREN exp:e RPAREN LCURLY varDeclList:vl stmtList:sl RCURLY
+                {:
+                    RESULT = new IfStmtNode(e, new DeclListNode(vl), new StmtListNode(sl));
+                :}
+                | IF LPAREN exp:e RPAREN LCURLY varDeclList:vl1 stmtList:sl1 RCURLY 
+                ELSE LCURLY varDeclList:vl2 stmtList:sl2 RCURLY
+                {:
+                    RESULT = new IfElseStmtNode(e, new DeclListNode(vl1), new StmtListNode(sl1),
+                    new DeclListNode(vl2), new StmtListNode(sl2));
+                :}
+                | WHILE LPAREN exp:e RPAREN LCURLY varDeclList:vl stmtList:sl RCURLY
+                {:
+                    RESULT = new WhileStmtNode(e, new DeclListNode(vl), new StmtListNode(sl));
+                :}
+                | REPEAT LPAREN exp:e RPAREN LCURLY varDeclList:vl stmtList: sl RCURLY
+                {:
+                    RESULT = new RepeatStmtNode(e, new DeclListNode(vl), new StmtListNode(sl));
+                :}
+                | RETURN exp:e SEMICOLON
+                {:
+                    RESULT = new ReturnStmtNode(e);
+                :}
+                | RETURN SEMICOLON
+                {:
+                    RESULT = new ReturnStmtNode(null);
+                :}
+                | fncall:f SEMICOLON
+                {:
+                    RESULT = new CallStmtNode(f); 
+                :}
+                ;
 
 
 				
