@@ -91,6 +91,8 @@ non terminal LinkedList       stmtList;
 non terminal LinkedList       varDeclList;
 non terminal LinkedList       stmtList;
 non terminal StmtNode         stmt;
+non terminal AssignNode       assignExp;
+non terminal ExpNode          loc;
  
  
 /* NOTE: Add precedence and associativity declarations here */
@@ -304,6 +306,23 @@ stmt            ::= assignExp:a SEMICOLON
                     RESULT = new CallStmtNode(f); 
                 :}
                 ;
+
+assignExp       ::= loc:l ASSIGN exp:e
+                {:
+                    RESULT = new AssignNode(l, e);
+                :}
+                ;
+
+loc             ::= id:i
+                {:
+                    RESULT = i; 
+                :}
+                | loc:l DOT id:i
+                {:
+                    RESULT = new DotAccessNode(l, i);
+                :}
+                ;
+
 
 
 				
