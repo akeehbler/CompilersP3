@@ -111,7 +111,7 @@ precedence left PLUS, MINUS;
 
 precedence left TIMES, DIVIDE;
 
-precedence left UMINUS, NOT;
+precedence left NOT;
 
 precedence left DOT; //Not sure where to put this in the order of precedences
 
@@ -269,7 +269,7 @@ stmt            ::= assignExp:a SEMICOLON
                 {:
                     RESULT = new PreDecStmtNode(l);
                 :}
-                | RECIEVE READ loc:l SEMICOLON
+                | RECEIVE READ loc:l SEMICOLON
                 {:
                     RESULT = new ReceiveStmtNode(l);
                 :}
