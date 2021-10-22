@@ -154,7 +154,7 @@ varDecl         ::= type:t id:i SEMICOLON
                 | STRUCT id:i1 id:i2 SEMICOLON
                 {:
                     //TODO make sure that this is right
-                    RESULT = new VarDeclNode(new StructNode(id1), id2, 0);
+                    RESULT = new VarDeclNode(new StructNode(i1), i2, 0);
                 :}
                 ;
 
@@ -321,7 +321,7 @@ loc             ::= id:i
                 :}
                 | loc:l DOT id:i
                 {:
-                    RESULT = new DotAccessNode(l, i);
+                    RESULT = new DotAccessExpNode(l, i);
                 :}
                 ;
 
