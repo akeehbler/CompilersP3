@@ -42,6 +42,9 @@ ErrMsg.class: ErrMsg.java
 test:
 	java -cp $(CP) P3 test.b test.out
 
+up:
+	java -cp $(CP) P3 up.b up.out
+
 ###
 # clean
 ###
