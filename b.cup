@@ -91,6 +91,10 @@ non terminal LinkedList       stmtList;
 non terminal StmtNode         stmt;
 non terminal AssignNode       assignExp;
 non terminal ExpNode          loc;
+// non terminal ExpNode exp;
+// non terminal ExpNode term;
+// non terminal CallExpNode fncall;
+// non terminal LinkedList actualList;
  
  
 /* NOTE: Add precedence and associativity declarations here */
