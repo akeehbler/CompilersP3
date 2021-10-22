@@ -88,8 +88,6 @@ non terminal FormalDeclNode   formalDecl;
 non terminal LinkedList       formalsList;
 non terminal LinkedList       varDeclList;
 non terminal LinkedList       stmtList;
-non terminal LinkedList       varDeclList;
-non terminal LinkedList       stmtList;
 non terminal StmtNode         stmt;
 non terminal AssignNode       assignExp;
 non terminal ExpNode          loc;
@@ -109,7 +107,7 @@ precedence left PLUS, MINUS;
 
 precedence left TIMES, DIVIDE;
 
-precedence left NOT;
+precedence left UMINUS, NOT;
 
 precedence left DOT; //Not sure where to put this in the order of precedences
 
@@ -192,6 +190,18 @@ structBody      ::= structBody:sb varDecl:v
                 :}
                 ;
 
+fnDecl          ::= type:t id:i formals:fs fnBody:fb
+                {:
+                    RESULT = new FnDeclNode(t, i, fs, fb);
+                :}
+                ;
+
+fnBody          ::= LCURLY varDeclList:vdl stmtList:sl RCURLY
+                {:
+                    RESULT = new FnBodyNode(new DeclListNode(vdl), new StmtListNode(sl));
+                :}
+                ;
+
 formals         ::= LPAREN RPAREN
                 {:
                     RESULT = new FormalsListNode(new LinkedList<FormalDeclNode>());
@@ -199,6 +209,12 @@ formals         ::= LPAREN RPAREN
                 | LPAREN formalsList:fl RPAREN
                 {:
                     RESULT = new FormalsListNode(fl);
+                :}
+                ;
+
+formalDecl      ::= type:t id:i
+                {:
+                    RESULT = new FormalDeclNode(t, i);
                 :}
                 ;
 
@@ -212,24 +228,6 @@ formalsList     ::= formalsList:fl COMMA formalDecl:fd
                     LinkedList<FormalDeclNode> fdl = new LinkedList<FormalDeclNode>();
                     fdl.addLast(fd);
                     RESULT = fdl;
-                :}
-                ;
-
-formalDecl      ::= type:t id:i
-                {:
-                    RESULT = new FormalDeclNode(t, i);
-                :}
-                ;
-
-fnDecl          ::= type:t id:i formals:fs fnBody:fb
-                {:
-                    RESULT = new FnDeclNode(t, i, fs, fb);
-                :}
-                ;
-
-fnBody          ::= LCURLY varDeclList:vdl stmtList:sl RCURLY
-                {:
-                    RESULT = new FnBodyNode(new DeclListNode(vdl), new StmtListNode(sl));
                 :}
                 ;
 
@@ -263,7 +261,7 @@ stmt            ::= assignExp:a SEMICOLON
                 {:
                     RESULT = new PreIncStmtNode(l);
                 :}
-                | MINUSMINUS loc:l SEMICOLON;
+                | MINUSMINUS loc:l SEMICOLON
                 {:
                     RESULT = new PreDecStmtNode(l);
                 :}
