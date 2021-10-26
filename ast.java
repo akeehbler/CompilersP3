@@ -163,7 +163,6 @@ class FormalsListNode extends ASTnode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
         Iterator it = myFormals.iterator();
         boolean firstFormal = true;
         try{
@@ -457,7 +456,7 @@ class ReceiveStmtNode extends StmtNode {
 
     public void unparse(PrintWriter p, int indent) {
 		addIndent(p, indent);
-        p.print("cin >> ");
+        p.print("receive >> ");
         myExp.unparse(p, indent);
         p.println(";");
     }
@@ -473,7 +472,7 @@ class PrintStmtNode extends StmtNode {
 
     public void unparse(PrintWriter p, int indent) {
 		addIndent(p, indent);
-        p.print("cout << ");
+        p.print("print << ");
         myExp.unparse(p, 0);
         p.println(";");
     }
@@ -613,9 +612,9 @@ class ReturnStmtNode extends StmtNode {
     public void unparse(PrintWriter p, int indent) {
 		addIndent(p, indent);
 		if (myExp == null) {
-			p.println("return;");
+			p.println("ret;");
 		} else {
-            p.print("return ");
+            p.print("ret ");
             myExp.unparse(p, indent);
 			p.println(";");
         }
@@ -672,7 +671,7 @@ class TrueNode extends ExpNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-		p.print("true");
+			p.print("tru");
     }
 
 		// 2 kids
@@ -687,7 +686,7 @@ class FalseNode extends ExpNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-		p.print("false");
+		p.print("fls");
     }
 
 		// 2 kids

@@ -211,7 +211,6 @@ formalsList     ::= formalDecl:fd
                 :}
 				| formalDecl:fd COMMA formalsList:fl
                 {:
-				    // TODO add or addLast?
                     fl.add(fd);
                     RESULT = fl;
                 :}
