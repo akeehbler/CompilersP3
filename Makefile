@@ -45,6 +45,9 @@ test:
 up:
 	java -cp $(CP) P3 up.b up.out
 
+test2:
+	java -cp $(CP) P3 test2.b test2.out
+  
 ###
 # clean
 ###
