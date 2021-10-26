@@ -211,7 +211,7 @@ formalsList     ::= formalDecl:fd
                 :}
 								| formalDecl:fd COMMA formalsList:fl
                 {:
-                    fl.addLast(fd);
+                    fl.addFirst(fd);
                     RESULT = fl;
                 :}
                 ;
