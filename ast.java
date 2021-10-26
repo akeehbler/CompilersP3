@@ -193,7 +193,6 @@ class FnBodyNode extends ASTnode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: make sure this is right
         myDeclList.unparse(p, indent + 4);
         myStmtList.unparse(p, indent + 4);
     }
@@ -299,8 +298,8 @@ class FnDeclNode extends DeclNode {
         p.print("(");
         myFormalsList.unparse(p, indent);
         p.println(") {");
-        myBody.unparse(p, indent + 4);
-		addIndent(p, indent);
+        myBody.unparse(p, indent);
+				addIndent(p, indent);
         p.println("}");
     }
 
@@ -318,7 +317,6 @@ class FormalDeclNode extends DeclNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
         myType.unparse(p, indent);
         p.print(" ");
         myId.unparse(p, indent);
@@ -336,7 +334,6 @@ class StructDeclNode extends DeclNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure that this is right
 		addIndent(p, indent);
         p.print("struct ");
         myId.unparse(p, indent);
@@ -427,7 +424,6 @@ class PreIncStmtNode extends StmtNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
 		addIndent(p, indent);
         p.print("++");
         myExp.unparse(p, indent);
@@ -460,7 +456,6 @@ class ReceiveStmtNode extends StmtNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
 		addIndent(p, indent);
         p.print("cin >> ");
         myExp.unparse(p, indent);
@@ -477,7 +472,6 @@ class PrintStmtNode extends StmtNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
 		addIndent(p, indent);
         p.print("cout << ");
         myExp.unparse(p, 0);
@@ -496,8 +490,7 @@ class IfStmtNode extends StmtNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
-		addIndent(p, indent);
+				addIndent(p, indent);
         p.print("if (");
         myExp.unparse(p, indent);
         p.println(") {");
@@ -525,8 +518,7 @@ class IfElseStmtNode extends StmtNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
-		addIndent(p, indent);
+				addIndent(p, indent);
         p.print("if (");
         myExp.unparse(p, indent);
         p.println(") {");
@@ -582,8 +574,7 @@ class RepeatStmtNode extends StmtNode {
     }
 	
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure the "repeat" and other stuff is right
-		addIndent(p, indent);
+				addIndent(p, indent);
         p.print("repeat (");
         myExp.unparse(p, indent);
         p.println(") {");
@@ -605,8 +596,7 @@ class CallStmtNode extends StmtNode {
     }
 
     public void unparse(PrintWriter p, int indent) {
-        //TODO: Make sure this is right
-		addIndent(p, indent);
+				addIndent(p, indent);
         myCall.unparse(p, indent);
         p.println(";");
     }
