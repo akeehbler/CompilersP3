@@ -176,7 +176,7 @@ fnDecl          ::= type:t id:i formals:fs fnBody:fb
                 :}
                 ;
 
-structDecl      ::= STRUCT id:i LCURLY structBody:sb RCURLY SEMICOLON
+structDecl      ::= STRUCT id:i LCURLY structBody:sb RCURLY
                 {:
                     RESULT = new StructDeclNode(i, new DeclListNode(sb));
                 :}
