@@ -31,7 +31,7 @@ int writeFunc(int count, bool stop) {
 				ret b;
     }
 
-    if (a <= count && stop) {
+    if a <= count && stop {
 			print << count;
     } else {
 			print << a;
@@ -59,7 +59,7 @@ void main() {
         int mate;
         struct b m;
         writeFunc(a, man.b);
-        if (man.b) {
+        if man.b {
             a = a + 2;
 						ret a;
         } else {
