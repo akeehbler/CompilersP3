@@ -6,8 +6,7 @@ bool checker;
 struct man {
     int i;
     bool b;
-};
-struct ball t;
+}
 void read() {
     numRead = 0;
     while (numRead < 10) {
