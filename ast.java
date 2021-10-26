@@ -339,7 +339,7 @@ class StructDeclNode extends DeclNode {
         p.println(" {");
         myDeclList.unparse(p, indent + 4);
 		addIndent(p, indent);
-        p.println("};");
+        p.println("}");
     }
 
     // 2 kids
