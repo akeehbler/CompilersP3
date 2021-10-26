@@ -140,10 +140,10 @@ decl            ::= varDecl:v
                 {: 
                     RESULT = v;
                 :}
-								| fnDecl:fd
-								{:
-										RESULT = fd;
-								:}
+				| fnDecl:fd
+				{:
+					RESULT = fd;
+				:}
                 | structDecl:sd
                 {:
                     RESULT = sd;
@@ -209,10 +209,9 @@ formalsList     ::= formalDecl:fd
                     fdl.addLast(fd);
                     RESULT = fdl;
                 :}
-								|
-								formalDecl:fd COMMA formalsList:fl
+				| formalDecl:fd COMMA formalsList:fl
                 {:
-										// TODO add or addLast?
+				    // TODO add or addLast?
                     fl.add(fd);
                     RESULT = fl;
                 :}
@@ -344,9 +343,9 @@ exp            ::= assignExp:ae
                 | MINUS term:t
                 {: RESULT = new UnaryMinusNode(t); 
                 :}
-								| term:t
-								{: RESULT = t;
-								:}
+				| term:t
+				{: RESULT = t;
+				:}
                 ;
 
 term            ::= loc:l 
