@@ -10,28 +10,28 @@ struct man {
 void read() {
     numRead = 0;
     while ((numRead < 10)) {
-        cin >> man.i;
+        receive >> man.i;
         ++numRead;
     }
     man.i = 2;
     if ((numRead >= 10)) {
         numRead = 0;
     }
-    return true;
-    return false;
+    ret tru;
+    ret fls;
 }
 int writeFunc(bool stop, int count) {
     repeat (count) {
-        cout << a;
+        print << a;
         ++count;
         --a;
-        return b;
+        ret b;
     }
     if (((a <= count) && stop)) {
-        cout << count;
+        print << count;
     }
     else {
-        cout << a;
+        print << a;
     }
 }
 void main() {
@@ -56,18 +56,18 @@ void main() {
         writeFunc(a, man.b);
         if (man.b) {
             a = (a + 2);
-            return a;
+            ret a;
         }
         else {
             a = (a - 2);
-            return a;
+            ret a;
         }
         man.b = (-man.b);
         beef = "Cool";
         read();
         write();
         --a;
-        return;
+        ret;
     }
     if ((b == (-1))) {
         x = ((4 + (3 * 5)) - y);
@@ -78,11 +78,11 @@ void main() {
     else {
         x = 0;
     }
-    if (true) {
-        cout << "wut";
-        cin >> man.b;
+    if (tru) {
+        print << "wut";
+        receive >> man.b;
     }
-    if (false) {
+    if (fls) {
     }
     repeat (80) {
         struct i m;
@@ -122,8 +122,8 @@ void main() {
             if ((a != (a || b))) {
             }
         }
-        return m;
-        return;
+        ret m;
+        ret;
         read();
         write();
     }
